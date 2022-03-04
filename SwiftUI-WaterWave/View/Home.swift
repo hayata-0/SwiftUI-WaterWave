@@ -21,10 +21,22 @@ struct Home: View {
             Text("hayata")
                 .fontWeight(.semibold)
                 .foregroundColor(.gray)
+                .padding(.bottom,30)
             
             //Wave Form
             GeometryReader {proxy in
                 let size = proxy.size
+                
+                ZStack {
+                    //Water Drop
+                    Image(systemName: "drop.fill")
+                        .resizable()
+                        .renderingMode(.template)
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(.white)
+                        .scaleEffect(x: 1.1, y: 1)
+                }
+                .frame(width: size.width, height: size.height, alignment: .center)
             }
             .frame(height: 350)
         }
@@ -39,3 +51,4 @@ struct Home_Previews: PreviewProvider {
         Home()
     }
 }
+
