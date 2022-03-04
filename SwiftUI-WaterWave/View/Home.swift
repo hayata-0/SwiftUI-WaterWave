@@ -9,7 +9,28 @@ import SwiftUI
 
 struct Home: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Image("Pic")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+                .padding(10)
+                .background(.white,in: Circle())
+            
+            Text("hayata")
+                .fontWeight(.semibold)
+                .foregroundColor(.gray)
+            
+            //Wave Form
+            GeometryReader {proxy in
+                let size = proxy.size
+            }
+            .frame(height: 350)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .background(Color("BG"))
     }
 }
 
