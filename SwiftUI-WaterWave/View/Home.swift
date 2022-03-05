@@ -35,13 +35,50 @@ struct Home: View {
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(.white)
                         .scaleEffect(x: 1.1, y: 1)
+                        .offset(y: -1)
                     
                     //wave form shape
                     WaterWave(progress: 0.5, waveHeight: 0.1, offset: size.width)
+                        .fill(Color("Blue"))
+                        .overlay(content: {
+                            ZStack {
+                                Circle()
+                                    .fill(.white.opacity(0.1))
+                                    .frame(width: 15, height: 15)
+                                    .offset(x: -20)
+                                
+                                Circle()
+                                    .fill(.white.opacity(0.1))
+                                    .frame(width: 15, height: 15)
+                                    .offset(x: 40,y: 30)
+                                
+                                Circle()
+                                    .fill(.white.opacity(0.1))
+                                    .frame(width: 25, height: 25)
+                                    .offset(x: -30,y: 80)
+                                
+                                Circle()
+                                    .fill(.white.opacity(0.1))
+                                    .frame(width: 25, height: 25)
+                                    .offset(x: 50,y: 70)
+                                
+                                Circle()
+                                    .fill(.white.opacity(0.1))
+                                    .frame(width: 10, height: 10)
+                                    .offset(x: 40,y: 100)
+                                
+                                Circle()
+                                    .fill(.white.opacity(0.1))
+                                    .frame(width: 10, height: 10)
+                                    .offset(x: -40,y: 50)
+                                
+                            }
+                        })
                         .mask{
                             Image(systemName: "drop.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .padding(20)
                         }
                 }
                 .frame(width: size.width, height: size.height, alignment: .center)
