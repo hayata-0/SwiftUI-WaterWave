@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct Home: View {
+    
+    @State var progress: CGFloat = 0.5
+    @State var startAnimation: CGFloat = 0
+    
     var body: some View {
         VStack {
             Image("Pic")
@@ -38,7 +42,7 @@ struct Home: View {
                         .offset(y: -1)
                     
                     //wave form shape
-                    WaterWave(progress: 0.5, waveHeight: 0.1, offset: size.width)
+                    WaterWave(progress: progress, waveHeight: 0.1, offset: startAnimation)
                         .fill(Color("Blue"))
                         .overlay(content: {
                             ZStack {
@@ -80,10 +84,29 @@ struct Home: View {
                                 .aspectRatio(contentMode: .fit)
                                 .padding(20)
                         }
+                        .overlay(alignment: .bottom){
+                            Button {
+                                progress += 0.01
+                            }label: {
+                                Image(systemName: "plus")
+                                    .font(.system(size:40,weight: .black))
+                                    .foregroundColor(Color("Blue"))
+                                    .shadow(radius: 2)
+                                    .padding(25)
+                                    .background(.white,in: Circle())
+                            }
+                            .offset(y: 40)
+                        }
                 }
                 .frame(width: size.width, height: size.height, alignment: .center)
+                .onAppear {
+                    withAnimation(.linear(duration: 2).repeatForever(autoreverses: false)){
+                        startAnimation = size.width
+                    }
+                }
             }
             .frame(height: 350)
+            Slider(value: $progress)
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
