@@ -38,6 +38,11 @@ struct Home: View {
                     
                     //wave form shape
                     WaterWave(progress: 0.5, waveHeight: 0.1, offset: size.width)
+                        .mask{
+                            Image(systemName: "drop.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
                 }
                 .frame(width: size.width, height: size.height, alignment: .center)
             }
